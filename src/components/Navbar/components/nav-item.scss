@@ -1,0 +1,54 @@
+@import '../../../styles/variables.scss';
+
+.nav-item {
+    display: flex;
+    align-items: center;
+
+    background-color: var(--second-background);
+
+    margin: 0 1rem;
+    padding: 0.3rem 0.5rem;
+
+    border-radius: 0.5rem;
+
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 300;
+    font-size: 0.9rem;
+    transition: 0.2s;
+    box-shadow: 1px 4px 2px 0px rgba(0, 0, 0, 0.2);
+    width: 90%;
+
+    #pill {
+        background-color: var(--background);
+
+        transition: 0.2s;
+
+        padding: 0.1rem 0.8rem;
+        border-radius: 0.5rem;
+
+        .iconify {
+            font-size: 0.9rem;
+        }
+    }
+
+    .title {
+        display: flex;
+        justify-content: center;
+
+        width: 100%;
+    }
+
+    &:hover {
+        background-color: var(--second-background-hover);
+        #pill {
+            background-color: rgba($theme-color, 0.7) !important;
+        }
+    }
+
+    &.active {
+        #pill {
+            background-color: $theme-color;
+        }
+    }
+}
