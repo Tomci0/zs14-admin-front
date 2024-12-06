@@ -1,0 +1,47 @@
+@import '../../styles/variables.scss';
+
+.error-404 {
+    background-color: var(--background);
+    color: var(--text-color);
+    text-align: center;
+    padding: 50px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 5px;
+
+    h1 {
+        font-size: 6rem;
+        margin: 0;
+    }
+
+    p {
+        font-size: 1.5rem;
+        margin: 20px 0;
+    }
+
+    .back-home-btn {
+        background-color: $theme-color;
+        color: var(--navbar-text-color);
+        border: none;
+        padding: 10px 20px;
+        border-radius: $dropdown-border-radius;
+        box-shadow: $navbar-btn-shadow;
+        cursor: pointer;
+        transition: background-color 0.3s;
+
+        text-decoration: none;
+
+        &:hover {
+            background-color: $navbar-btn-hover-bg;
+        }
+
+        &:active {
+            background-color: $navbar-btn-active-bg;
+        }
+    }
+}

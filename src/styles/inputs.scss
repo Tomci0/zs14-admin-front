@@ -1,9 +1,16 @@
-.form-control {
+.form-control,
+.form-select {
     color: var(--text-color);
     background-color: var(--second-background);
+    border: 1px solid transparent;
 
     &:focus {
         box-shadow: none;
+        border-color: transparent;
+    }
+
+    &:hover {
+        cursor: pointer;
         border-color: $theme-color;
     }
 }

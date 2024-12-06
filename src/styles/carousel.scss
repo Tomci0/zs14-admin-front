@@ -1,0 +1,16 @@
+.carousel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .carousel-indicators {
+        [data-bs-target] {
+            border-radius: 50%;
+
+            width: 10px;
+            height: 10px;
+
+            background-color: var(--text-color) !important;
+        }
+    }
+}

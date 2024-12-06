@@ -1,0 +1,21 @@
+.section {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 1rem;
+
+    width: 100%;
+
+    .section-title {
+        font-size: 1rem;
+        font-weight: 400;
+    }
+
+    .section-content {
+        display: flex;
+        gap: 1rem;
+
+        width: 100%;
+        flex: 1;
+    }
+}

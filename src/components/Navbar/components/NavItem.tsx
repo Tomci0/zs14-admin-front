@@ -23,7 +23,7 @@ export default function NavItem({
 }) {
     const location = useLocation();
 
-    const [active, setActive] = useState<boolean>(location.pathname === to);
+    const [active, setActive] = useState<boolean>(false);
 
     useEffect(() => {
         setActive(location.pathname === to);

@@ -1,72 +1,62 @@
-export default [
+const navItems = [
     {
         title: 'Strona Główna',
         icon: 'mdi:home',
         path: '/',
         tooltip: 'Przejdź do strony głównej',
     },
-
     {
         title: 'Konsultacje',
-        permission: ['consultations'],
         path: '/consultations',
         collapsible: true,
         items: [
             {
-                title: 'Twoje Konsultacje',
+                title: 'Kalendarz',
                 icon: 'mdi:calendar',
                 path: '/consultations/calendar',
-                permission: ['teacher', 'classteacher'],
                 tooltip: 'Zobacz swoje konsultacje',
             },
             {
-                title: 'Historia Konsultacji',
+                title: 'Historia',
                 icon: 'mdi:calendar-check',
                 path: '/consultations/history',
-                permission: ['teacher', 'classteacher'],
                 tooltip: 'Przejrzyj historię konsultacji',
             },
         ],
     },
     {
         title: 'Radiowęzeł',
-        permission: ['radio'],
         path: '/radio',
         collapsible: true,
         items: [
             {
-                title: 'Statystyki',
-                icon: 'mdi:chart-bar',
-                path: '/radio/statistics',
-                permission: ['radio', 'admin'],
-                tooltip: 'Zobacz statystyki radiowęzła',
+                title: 'Strona Radiowęzła',
+                icon: 'mdi:radio',
+                path: '/radio/',
+                tooltip: 'Zobacz stronę radiowęzła',
             },
             {
-                title: 'Piosenki',
+                title: 'Piosenki od Użytkowników',
                 icon: 'mdi:music',
                 path: '/radio/songs',
-                permission: ['radio'],
-                tooltip: 'Przeglądaj piosenki',
+                tooltip: 'Przeglądaj piosenki do weryfikacji',
             },
             {
                 title: 'Kolejka',
                 icon: 'mdi:queue-music',
                 path: '/radio/queue',
-                permission: ['radio'],
                 tooltip: 'Zarządzaj kolejką piosenek',
             },
             {
                 title: 'Historia',
                 icon: 'mdi:history',
                 path: '/radio/history',
-                permission: ['radio'],
                 tooltip: 'Przeglądaj historię odtwarzania',
             },
         ],
     },
     {
         title: 'E-Sport',
-        permission: ['esport'],
         path: '/esport',
         collapsible: true,
         items: [
@@ -74,28 +64,24 @@ export default [
                 title: 'Kalendarz Eventów',
                 icon: 'mdi:calendar',
                 path: '/esport/calendar',
-                permission: ['esport'],
                 tooltip: 'Zobacz kalendarz eventów',
             },
             {
                 title: 'Historia Eventów',
                 icon: 'mdi:history',
                 path: '/esport/history',
-                permission: ['esport'],
                 tooltip: 'Przeglądaj historię eventów',
             },
             {
                 title: 'Panel Zespołu',
                 icon: 'mdi:cog',
                 path: '/esport/panel',
-                permission: ['esport', 'admin'],
                 tooltip: 'Zarządzaj zespołem',
             },
         ],
     },
     {
         title: 'Wychowawca',
-        permission: ['classteacher'],
         path: '/class',
         collapsible: true,
         items: [
@@ -103,14 +89,12 @@ export default [
                 title: 'Twoja Klasa',
                 icon: 'mdi:calendar',
                 path: '/class/my',
-                permission: ['classteacher'],
                 tooltip: 'Zobacz swoją klasę',
             },
         ],
     },
     {
         title: 'Administracyjne',
-        permission: ['admin'],
         path: '/admin',
         collapsible: true,
         items: [
@@ -118,28 +102,24 @@ export default [
                 title: 'Użytkownicy',
                 icon: 'mdi:account-group',
                 path: '/admin/users',
-                permission: ['admin'],
                 tooltip: 'Zarządzaj użytkownikami',
             },
             {
                 title: 'Klasy',
                 icon: 'mdi:chart-bar',
                 path: '/admin/reports',
-                permission: ['admin'],
                 tooltip: 'Zobacz raporty klas',
             },
             {
                 title: 'Statystyki',
                 icon: 'mdi:chart-bar',
                 path: '/admin/statistics',
-                permission: ['admin'],
                 tooltip: 'Przeglądaj statystyki',
             },
         ],
     },
     {
         title: 'Super Admin',
-        permission: ['superadmin'],
         path: '/superadmin',
         collapsible: true,
         items: [
@@ -147,16 +127,16 @@ export default [
                 title: 'Logi',
                 icon: 'mdi:history',
                 path: '/superadmin/logs',
-                permission: ['superadmin'],
                 tooltip: 'Przeglądaj logi systemowe',
             },
             {
                 title: 'Panel Superadmina',
                 icon: 'mdi:cog',
                 path: '/superadmin/panel',
-                permission: ['superadmin'],
                 tooltip: 'Zarządzaj systemem',
             },
         ],
     },
 ];
+
+export default navItems;

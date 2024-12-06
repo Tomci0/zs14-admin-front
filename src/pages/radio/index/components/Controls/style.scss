@@ -1,0 +1,67 @@
+@import '../../../../../styles/variables.scss';
+
+.controls-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
+    .now-playing {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        .title {
+            font-size: 1.25rem;
+            font-weight: 500;
+        }
+
+        .artist {
+            font-size: 1rem;
+            font-weight: 300;
+
+            color: var(--text-color);
+        }
+    }
+
+    .progress {
+        width: 80%;
+
+        height: 0.3rem;
+    }
+
+    .controls {
+        display: flex;
+        gap: 1rem;
+
+        .control-btn {
+            font-size: 2rem;
+
+            &:hover {
+                color: $theme-color;
+            }
+
+            &:active {
+                border: none !important;
+            }
+        }
+
+        .play-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 3.5rem;
+            height: 3.5rem;
+            background-color: var(--second-background);
+            border-radius: 50%;
+            font-size: 2.5rem;
+
+            &:hover {
+                color: #fff;
+
+                background-color: $theme-color;
+            }
+        }
+    }
+}

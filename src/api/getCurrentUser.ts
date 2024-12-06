@@ -2,18 +2,6 @@ import IUser from '../types/user.type';
 
 import { getApiUrl } from '../constants/functions';
 
-interface ApiResponse extends Response {
-    error?: {
-        authError?: boolean;
-        statusCode: number;
-        isLogged: boolean;
-        status: string;
-    };
-    message: string;
-    isLogged?: boolean;
-    data?: any;
-}
-
 export default async function getCurrentUser(): Promise<any> {
     const response = await fetch(getApiUrl('users', 'me'), {
         method: 'GET',

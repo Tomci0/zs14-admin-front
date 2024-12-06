@@ -1,5 +1,12 @@
 import { useEffect, useState } from 'react';
+import { ConsultationProvider } from '../../contexts/useConsultations';
 
-export default function Calendar() {
-    return <div>Calendar</div>;
+import Calendar from '../../components/Calendar';
+
+export default function CalendarPage() {
+    return (
+        <ConsultationProvider>
+            <Calendar />
+        </ConsultationProvider>
+    );
 }

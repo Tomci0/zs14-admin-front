@@ -1,0 +1,60 @@
+@import '../../../../styles/variables.scss';
+
+.queue-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    .song {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+
+        background-color: var(--second-background);
+        border-radius: 5px;
+
+        padding: 0.5rem 1rem;
+
+        .cover {
+            img {
+                width: 100px;
+                height: 100px;
+            }
+        }
+
+        .song-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.1rem;
+
+            .title {
+                font-size: 1rem;
+                font-weight: 500;
+            }
+
+            .artist,
+            .duration {
+                font-size: 0.8rem;
+                font-weight: 300;
+            }
+        }
+
+        .song-actions {
+            display: flex;
+            align-items: center;
+
+            .actual-playing {
+                font-size: 0.8rem;
+                font-weight: 300;
+
+                .badge {
+                    font-size: 0.8rem;
+                    font-weight: 400;
+
+                    background-color: $theme-color !important;
+                }
+            }
+        }
+    }
+}

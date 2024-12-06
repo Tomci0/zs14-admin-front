@@ -1,0 +1,69 @@
+@import '../../styles/variables.scss';
+
+// .card-body {
+// }
+
+.creator {
+    overflow: hidden;
+
+    .steps {
+        min-height: 20rem;
+        display: flex;
+        flex-direction: column;
+        > div {
+            transition: opacity 0.5s ease-in-out;
+            opacity: 0;
+            &.active {
+                opacity: 1;
+            }
+        }
+    }
+
+    .controls {
+        margin-top: 1rem;
+        .indicators {
+            margin-bottom: 0.8em;
+            display: flex;
+            justify-content: center;
+            gap: 0.25rem;
+
+            .indicator {
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background-color: var(--text-color);
+                transition: background-color 0.3s ease;
+
+                &.active {
+                    background-color: $theme-color;
+                }
+            }
+        }
+
+        .buttons {
+            display: flex;
+            gap: 0.5rem;
+
+            justify-content: center;
+            align-items: center;
+
+            .btn {
+                display: flex;
+                align-items: center;
+                gap: 0.25rem;
+
+                border: 1px solid;
+                border-color: $theme-color;
+                border-radius: 5px;
+
+                &.back {
+                    border-color: #ff6347;
+                }
+
+                &.finish {
+                    border-color: #019232;
+                }
+            }
+        }
+    }
+}

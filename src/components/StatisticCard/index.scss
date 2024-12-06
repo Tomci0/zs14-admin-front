@@ -1,0 +1,111 @@
+@import '../../styles/variables.scss';
+
+.statistic-card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--background);
+    border-radius: 10px;
+
+    // padding: 0.75rem;
+
+    box-shadow: 0px 0px 0px 5px rgba(0, 0, 0, 0.1);
+
+    .content {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        margin: 0.75rem;
+
+        &.has-footer-btn {
+            margin-bottom: 0;
+        }
+
+        .left {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .icon {
+                background-color: var(--second-background);
+                border-radius: 10px;
+
+                padding: 1.2rem;
+
+                .iconify {
+                    font-size: 1.75rem;
+                    color: var(--statistic-card-icon-color);
+                }
+            }
+        }
+
+        .right {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            flex-grow: 1;
+            max-width: calc(100% - 5rem);
+            .content-text {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                min-width: 0;
+
+                .value {
+                    font-size: 1.2rem;
+                    font-weight: 400;
+                    color: var(--text-color);
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    max-width: 100%;
+                }
+
+                .title {
+                    font-size: 1rem;
+                    font-weight: 300;
+                    color: var(--text-color);
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+
+    .footer-btn {
+        margin-top: 0.5rem;
+        width: 100%;
+        background-color: darken($theme-color, 10%);
+
+        border-radius: 0px 0px 15px 15px;
+
+        text-decoration: none;
+        color: var(--text-color);
+        transition: 0.2s;
+
+        &:hover {
+            cursor: pointer;
+            background-color: darken($theme-color, 15%);
+        }
+    }
+}
+
+@function hex-to-rgb($hex) {
+    // Usuń znak #, jeśli jest obecny
+    $hex: if(str-index($hex, '#'), str-slice($hex, 2), $hex);
+
+    // Podziel hex na komponenty RGB
+    $r: str-slice($hex, 1, 2);
+    $g: str-slice($hex, 3, 4);
+    $b: str-slice($hex, 5, 6);
+
+    // Konwertuj komponenty z hex na liczby
+    @return rgb(hex-to-dec($r), hex-to-dec($g), hex-to-dec($b));
+}
+
+@function hex-to-dec($hex) {
+    @return str-to-number('0x' + $hex);
+}

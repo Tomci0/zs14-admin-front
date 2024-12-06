@@ -1,6 +1,5 @@
 import { EBuilding, ETime } from './enums';
 
-import IScope from './scope.type';
 import IUser from './user.type';
 
 export default interface IConsultation {
