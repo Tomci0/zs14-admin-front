@@ -1,16 +1,30 @@
 import { useEffect } from 'react';
 
-import { Card } from 'react-bootstrap';
-import { Icon } from '@iconify/react';
+import Queue from '../components/Queue';
+import Song from '../components/Queue/Song';
 
-import List from './components/List';
-
-// import './style.scss';
+import yts from 'yt-search';
 
 export default function Songs() {
     useEffect(() => {
         document.title = 'Piosenki od Użytkowników';
     }, []);
 
-    return <List className="w-100 h-100 max-vh-100" />;
+    console.log(yts({ videoId: 'IBr0_Sj64Mk' }));
+
+    // return <List className="w-100 h-100 max-vh-100" />;
+    return (
+        <Queue title="Piosenki od Użytkowników" className="w-100 h-100 max-vh-100">
+            <Song
+                cover="https://placehold.co/100"
+                title="Mefedron Love"
+                artist="Targówek"
+                duration="3:24"
+                actions={{
+                    info: true,
+                    verification: true,
+                }}
+            />
+        </Queue>
+    );
 }

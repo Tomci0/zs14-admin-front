@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useContext, useEffect, useMemo, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 
 import getCurrentUser from '../api/getCurrentUser';
 import logoutApi from '../api/logout';
@@ -32,6 +32,7 @@ export function AuthProvider({ children }: { children: ReactNode }): JSX.Element
     const [error, setError] = useState<any>(undefined);
 
     const location = useLocation();
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (error) setError(undefined);
@@ -42,6 +43,14 @@ export function AuthProvider({ children }: { children: ReactNode }): JSX.Element
             .then((user) => {
                 setUser(user);
                 setIsLogged(user.isLogged);
+
+                // if (!user.isLogged) {
+                //     window.location.href = 'http://localhost:3000?error=not_logged';
+                // }
+
+                // if (!user.isAdmin && !user.isTeacher) {
+                //     window.location.href = 'http://localhost:3000?error=insufficient_permissions';
+                // }
                 setLoading(false);
             })
             .catch((error) => {

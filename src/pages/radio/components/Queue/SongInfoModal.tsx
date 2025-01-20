@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Modal, Row, Col, Container, Button } from 'react-bootstrap';
+import React from 'react';
+import { Modal, Button } from 'react-bootstrap';
 import { Icon } from '@iconify/react';
 
 export default function SongInfoModal({
@@ -7,11 +7,13 @@ export default function SongInfoModal({
     setShow,
     onAccept,
     onReject,
+    verification = false,
 }: {
     show: boolean;
     setShow: (show: boolean) => void;
     onAccept: () => void;
     onReject: () => void;
+    verification?: boolean;
 }) {
     return (
         <Modal show={show} onHide={() => setShow(false)} centered className="song-info-modal" size="lg">
@@ -21,7 +23,7 @@ export default function SongInfoModal({
             <Modal.Body>
                 <div className="song-info">
                     <div className="cover">
-                        <img src="https://via.placeholder.com/250" alt="250" />
+                        <img src="https://placehold.co/250" alt="250" />
                     </div>
                     <div className="song-details">
                         <Item title="Wykonawca" value="Kasia Kowalska" icon="mdi:account-circle" />
@@ -32,15 +34,16 @@ export default function SongInfoModal({
                         <Item title="Gatunek" value="Pop" icon="mdi:music" />
 
                         <Item title="Źródło" value="YouTube" icon="mdi:youtube" />
-
-                        <div className="song-actions">
-                            <Button variant="none" className="btn-accept" onClick={onAccept}>
-                                <Icon icon="mdi:check" />
-                            </Button>
-                            <Button variant="none" className="btn-reject" onClick={onReject}>
-                                <Icon icon="mdi:close" />
-                            </Button>
-                        </div>
+                        {verification && (
+                            <div className="song-actions">
+                                <Button variant="none" className="btn-accept" onClick={onAccept}>
+                                    <Icon icon="mdi:check" />
+                                </Button>
+                                <Button variant="none" className="btn-reject" onClick={onReject}>
+                                    <Icon icon="mdi:close" />
+                                </Button>
+                            </div>
+                        )}
                     </div>
                 </div>
                 <div className="lyrics">

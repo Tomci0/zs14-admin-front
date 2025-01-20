@@ -47,6 +47,7 @@ export default function App() {
                                     <Route path="/radio" element={<Radio />} />
                                     <Route path="/radio/songs" element={<Songs />} />
                                     <Route path="/radio/queue" element={<Queue />} />
+                                    <Route path="/radio/history" element={<History />} />
 
                                     <Route path="*" element={<Error404 />} />
                                 </Routes>

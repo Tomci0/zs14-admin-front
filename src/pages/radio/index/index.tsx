@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { Row, Col, Container } from 'react-bootstrap';
-import StatisticCard from '../../../components/StatisticCard';
 
 import Statistics from './components/Statistics';
 import Controls from './components/Controls/Controls';
@@ -25,7 +24,16 @@ export default function Radio() {
             <Row className="mt-3">
                 <Col xs={12} md={12} lg={12}>
                     <Queue title="Kolejka Piosenek">
-                        <Song title="Mefedron Love" artist="Targówek" duration="3:24" actualPlaying={true} />
+                        <Song
+                            cover="https://placehold.co/100"
+                            title="Mefedron Love"
+                            artist="Targówek"
+                            duration="3:24"
+                            actions={{
+                                info: true,
+                                actualPlaying: true,
+                            }}
+                        />
                     </Queue>
                 </Col>
             </Row>

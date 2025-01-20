@@ -36,7 +36,7 @@ export default function Header() {
 
                         <Dropdown.Divider />
 
-                        <Dropdown.Item href="/logout">
+                        <Dropdown.Item href="http://localhost:3000/logout">
                             <Icon icon="mdi:logout" />
                             <span className="name">Wyloguj Się</span>
                         </Dropdown.Item>

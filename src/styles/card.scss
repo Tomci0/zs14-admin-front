@@ -41,5 +41,16 @@
                 background-color: $theme-color;
             }
         }
+
+        .action-btn {
+            font-size: 1.2rem;
+            cursor: pointer;
+
+            transition: 0.2s;
+
+            &:hover {
+                color: $theme-color;
+            }
+        }
     }
 }
