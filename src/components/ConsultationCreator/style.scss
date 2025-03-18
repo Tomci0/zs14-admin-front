@@ -1,3 +1,5 @@
+@import '../../styles/variables.scss';
+
 .step {
     .title {
         font-size: 1.25rem;
@@ -17,7 +19,42 @@
             .subjects-list {
                 display: flex;
                 flex-direction: column;
-                gap: 0.25rem;
+                gap: 1rem;
+
+                overflow: auto;
+                max-height: 20rem;
+
+                @media (min-width: 768px) {
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    gap: 1rem;
+                }
+
+                .subject {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5rem;
+                    padding: 1rem;
+                    background-color: var(--second-background);
+                    border-radius: 5px;
+                    box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.2);
+                    cursor: pointer;
+                    border: 1px solid transparent;
+
+                    flex: 1 1 25%;
+
+                    transition: background-color 0.2s;
+
+                    &:hover {
+                        background-color: var(--second-background-hover);
+                        border-color: $theme-color;
+                    }
+
+                    &.active {
+                        background-color: darken($theme-color, 15%) !important;
+                        color: var(--theme-text-color);
+                    }
+                }
             }
         }
 

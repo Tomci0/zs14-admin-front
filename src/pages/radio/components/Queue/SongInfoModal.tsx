@@ -26,12 +26,9 @@ export default function SongInfoModal({
                         <img src="https://placehold.co/250" alt="250" />
                     </div>
                     <div className="song-details">
-                        <Item title="Wykonawca" value="Kasia Kowalska" icon="mdi:account-circle" />
+                        <Item title="Autor" value="Kasia Kowalska" icon="mdi:account-circle" />
                         <Item title="Tytuł" value="Targowek Mefedron" icon="mdi:music-circle" />
                         <Item title="Długość" value="3:45" icon="mdi:clock-outline" />
-                        <Item title="Album" value="Mefedron" icon="mdi:album" />
-                        <Item title="Rok Wydania" value="2024" icon="mdi:calendar-outline" />
-                        <Item title="Gatunek" value="Pop" icon="mdi:music" />
 
                         <Item title="Źródło" value="YouTube" icon="mdi:youtube" />
                         {verification && (

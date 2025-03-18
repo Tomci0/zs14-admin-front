@@ -23,7 +23,7 @@ export default function Plate({ data }: { data: IConsultation }) {
                     </div>
                     <div className="item">
                         <Icon icon="mdi:book" />
-                        <span className="teacher-name">{data.subject}</span>
+                        <span className="teacher-name">{data.subjects?.join(', ')}</span>
                     </div>
                 </span>
             </div>

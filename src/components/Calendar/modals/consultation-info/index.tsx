@@ -151,7 +151,7 @@ export default function ConsultationInfoModal({
                                         _id: consultationData._id,
                                         date: consultationData.date,
                                         time: consultationData.time,
-                                        subject: consultationData.subject,
+                                        subjects: consultationData.subjects,
                                         teacher: consultationData.teacher,
                                     }}
                                 />

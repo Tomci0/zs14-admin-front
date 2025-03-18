@@ -1,0 +1,82 @@
+@import '../../styles/variables.scss';
+
+#material-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin: 1rem 0;
+
+    .material-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        overflow: auto;
+        max-height: 20rem;
+
+        // sklada sie z 3 elementow w rzedzie
+
+        @media (min-width: 768px) {
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .material {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            padding: 1rem;
+            background-color: var(--second-background);
+            border-radius: 5px;
+            box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            border: 1px solid transparent;
+
+            flex: 1 1 25%;
+
+            transition: background-color 0.2s;
+
+            .material-title {
+                font-size: 1rem;
+                font-weight: 500;
+                color: var(--theme-text-color);
+            }
+
+            .material-description {
+                font-size: 0.8rem;
+                font-weight: 400;
+                color: var(--theme-text-color);
+            }
+
+            &.active {
+                background-color: darken($theme-color, 15%) !important;
+                color: var(--theme-text-color);
+
+                .material-title {
+                    color: var(--theme-text-color);
+                }
+
+                .material-description {
+                    color: var(--theme-text-color);
+                }
+            }
+
+            &:hover {
+                background-color: var(--second-background-hover);
+                border-color: $theme-color;
+            }
+        }
+
+        .no-materials {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem;
+            color: var(--theme-text-color);
+
+            flex: 1 1 100%;
+        }
+    }
+}

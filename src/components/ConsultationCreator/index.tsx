@@ -7,6 +7,19 @@ import Creator from '../Creator';
 import Info from './steps/info';
 import Subjects from './steps/subjects';
 import Material from './steps/material';
+import Summary from './steps/Summary';
+import { ConsultationCreatorProvider } from '../../contexts/useCreator';
+interface IConsultationForm {
+    date: Date;
+    time: Number;
+    consultationInterval: [Date, Date] | boolean;
+    end_signing: Date | boolean;
+
+    description: string;
+
+    subjects: string[];
+    material: string;
+}
 
 export default function ConsultationCreator() {
     return (
@@ -16,11 +29,14 @@ export default function ConsultationCreator() {
                 <div className="title">Dodaj Konsultację</div>
             </Card.Header>
             <Card.Body>
-                <Creator>
-                    <Info />
-                    <Subjects />
-                    <Material />
-                </Creator>
+                <ConsultationCreatorProvider>
+                    <Creator>
+                        <Info />
+                        <Subjects />
+                        <Material />
+                        <Summary />
+                    </Creator>
+                </ConsultationCreatorProvider>
             </Card.Body>
         </Card>
     );

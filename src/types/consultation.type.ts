@@ -3,11 +3,11 @@ import { EBuilding, ETime } from './enums';
 import IUser from './user.type';
 
 export default interface IConsultation {
-    _id: string;
+    _id?: string;
 
     date: Date;
     time: number;
-    subject?: string;
+    subjects?: string[];
     teacher?: IUser;
     building?: string;
     room?: string;

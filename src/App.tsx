@@ -12,6 +12,7 @@ import Spinner from './components/Spinner';
 import { motion } from 'framer-motion';
 import Index from './pages';
 import Queue from './pages/radio/queue';
+import Class from './pages/class';
 
 const Calendar = lazy(() => import('./pages/consultations/calendar'));
 const History = lazy(() => import('./pages/consultations/history'));
@@ -48,6 +49,8 @@ export default function App() {
                                     <Route path="/radio/songs" element={<Songs />} />
                                     <Route path="/radio/queue" element={<Queue />} />
                                     <Route path="/radio/history" element={<History />} />
+
+                                    <Route path="/class/:id" element={<Class />} />
 
                                     <Route path="*" element={<Error404 />} />
                                 </Routes>

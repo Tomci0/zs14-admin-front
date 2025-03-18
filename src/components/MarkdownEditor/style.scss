@@ -1,0 +1,68 @@
+.markdown-editor {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .controls {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem;
+        // background-color: var(--second-background);
+        border-bottom: 1px solid var(--border-color);
+
+        .control {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem;
+            background-color: var(--second-background);
+            box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.2);
+            border: none;
+
+            border-radius: 4px;
+            cursor: pointer;
+
+            .iconify {
+                font-size: 1rem;
+            }
+
+            &:hover {
+                background-color: var(--second-background-hover);
+            }
+
+            &.active {
+                background-color: var(--theme-color);
+                color: var(--theme-text-color);
+
+                &:hover {
+                    background-color: var(--theme-color-hover);
+                }
+            }
+        }
+    }
+
+    .editor {
+        background-color: var(--second-background);
+        border: 0;
+        border-radius: 5px;
+        padding: 10px;
+        box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.2);
+        height: 20rem;
+
+        /* Zmiana z flex na block */
+        display: block;
+        min-height: 200px;
+        text-align: left;
+
+        /* Dodane właściwości dla lepszej edycji */
+        word-break: break-word;
+        overflow-y: auto;
+
+        &:focus {
+            outline: none;
+        }
+    }
+}

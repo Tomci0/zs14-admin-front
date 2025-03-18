@@ -1,18 +1,38 @@
-import React from 'react';
+import { useState } from 'react';
+
+import Step from '../../Step';
+
+import { FloatingLabel, Form, Row, Col } from 'react-bootstrap';
 
 import { Icon } from '@iconify/react';
 import { ETime } from '../../../../types/enums';
 import IConsultation from '../../../../types/consultation.type';
 
-import { Title } from './index';
-
 import { formatDate } from '../../../../libs/formatter';
 import IUser from '../../../../types/user.type';
+import useConsultations from '../../../../contexts/useCreator';
 
-export default function Info({ data }: { data: IConsultation }) {
+export default function Info() {
+    const { date, time, subjects, teacher, building, room, color, max_students, end_signing_up, description, scopes } =
+        useConsultations();
+
+    const data: IConsultation = {
+        date,
+        time,
+        subjects,
+        teacher,
+        building,
+        room,
+        color,
+        max_students,
+        end_signing_up,
+        description,
+        scopes,
+    };
     return (
-        <>
-            <Title text="Informacje:" icon="mdi:info" />
+        <div className="consultation-info">
+            <Title text="Informacje o konsultacji" icon="mdi:info" />
+
             <div className="info">
                 {data.date ? (
                     <Item
@@ -27,7 +47,7 @@ export default function Info({ data }: { data: IConsultation }) {
                 ) : (
                     ''
                 )}
-                {data.subjects ? <Item icon="mdi:book" label="Przedmiot" value={data.subjects?.join(', ')} /> : ''}
+                {data.subjects ? <Item icon="mdi:book" label="Przedmiot" value={data.subjects.join(', ')} /> : ''}
                 {data.teacher ? (
                     <Item icon="mdi:account" label="Nauczyciel" value={data.teacher?.name as string} />
                 ) : (
@@ -69,7 +89,7 @@ export default function Info({ data }: { data: IConsultation }) {
                     ''
                 )}
             </div>
-        </>
+        </div>
     );
 }
 
@@ -82,5 +102,14 @@ function Item({ icon, label, value }: { icon: string; label: string; value: stri
             </div>
             <span className="value">{value}</span>
         </div>
+    );
+}
+
+export function Title({ text, icon }: { text: string; icon?: string }) {
+    return (
+        <span className="title">
+            {icon && <Icon icon={icon} />}
+            {text}
+        </span>
     );
 }

@@ -1,0 +1,41 @@
+@import '../../styles/variables.scss';
+
+.students-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 100%;
+
+    .student {
+        background-color: var(--second-background);
+        padding: 1rem;
+        border-radius: 5px;
+        box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        border: 1px solid transparent;
+        transition: 0.2s;
+
+        // Każdy student zajmuje prawie połowę szerokości (z uwzględnieniem odstępu)
+        width: calc(50% - 0.5rem);
+
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        .iconify {
+            font-size: 1.5rem;
+            color: var(--theme-text-color);
+        }
+
+        .name {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--theme-text-color);
+        }
+
+        &:hover {
+            background-color: $theme-color;
+            border-color: $theme-color;
+        }
+    }
+}

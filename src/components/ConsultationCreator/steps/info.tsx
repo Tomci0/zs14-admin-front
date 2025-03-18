@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ChangeEventHandler, useEffect, useState } from 'react';
 
 import Step from '../Step';
 
@@ -6,10 +6,9 @@ import { FloatingLabel, Form, Row, Col } from 'react-bootstrap';
 
 import DateInput from '../../../components/DateInput';
 
-import DateRangePicker from '@wojtekmaj/react-daterange-picker';
+import useCreator from '../../../contexts/useCreator';
 
-import '@wojtekmaj/react-daterange-picker/dist/DateRangePicker.css';
-import 'react-calendar/dist/Calendar.css';
+import DateRangeInput from '../../DateRangeInput';
 
 type ValuePiece = Date | null;
 
@@ -17,12 +16,21 @@ type Value = ValuePiece | [ValuePiece, ValuePiece];
 
 export default function Info() {
     const [showSigningEnd, setShowSigningEnd] = useState(false);
-    const [showDateRange, setShowDateRange] = useState(false);
-    const [value, onChange] = useState<Value>([new Date(), new Date()]);
+    const [daySigningEnd, setDaySigningEnd] = useState(0);
+    const [hourSigningEnd, setHourSigningEnd] = useState('12:00');
+    const { date, setDate, time, setTime, end_signing_up, setEndSigningUp, building, setBuilding, room, setRoom } =
+        useCreator();
 
-    function handleDateRangeChange(e: any) {
-        setShowDateRange(e.target.checked);
-    }
+    useEffect(() => {
+        if (end_signing_up) {
+            const datesDiffrent = date.getDate() - end_signing_up.getDate();
+            setDaySigningEnd(datesDiffrent);
+            setShowSigningEnd(true);
+            const hours = end_signing_up.getHours().toString().padStart(2, '0');
+            const minutes = end_signing_up.getMinutes().toString().padStart(2, '0');
+            setHourSigningEnd(`${hours}:${minutes}`);
+        }
+    });
 
     return (
         <Step>
@@ -34,14 +42,20 @@ export default function Info() {
                         <Col xs={12} lg={6} className="mb-2">
                             <div className="form-group">
                                 <Form.Label htmlFor="inputPassword5">Data Konsultacji</Form.Label>
-                                <DateInput />
-                                {/* <Form.Control type="date" id="inputPassword5" aria-describedby="passwordHelpBlock" /> */}
+                                <DateInput value={date} setValue={setDate} />
                             </div>
                         </Col>
                         <Col xs={12} lg={6} className="mb-2">
                             <div className="form-group">
                                 <Form.Label htmlFor="inputPassword5">Godzina Konsultacji</Form.Label>
-                                <Form.Select aria-label="Default select example">
+                                <Form.Select
+                                    aria-label="Default select example"
+                                    onChange={(e) => {
+                                        console.log(e.currentTarget.value);
+                                        setTime(Number(e.currentTarget.value));
+                                    }}
+                                    value={time}
+                                >
                                     <option>Wybierz godzinę</option>
                                     <option value="1">8:00-8:45</option>
                                     <option value="2">8:50-9:35</option>
@@ -51,6 +65,40 @@ export default function Info() {
                         </Col>
                     </Row>
                     <Row>
+                        <Col className="mb-2">
+                            <Form.Group className="form-group">
+                                <Form.Label>Budynek</Form.Label>
+                                <Form.Select
+                                    value={building}
+                                    onChange={(e) => {
+                                        setBuilding(e.currentTarget.value);
+                                    }}
+                                >
+                                    <option value="0">Wybierz budynek</option>
+                                    <option value={1}>ul. Szanajcy 5</option>
+                                    <option value={2}>ul. Szanajcy 14/16</option>
+                                </Form.Select>
+                            </Form.Group>
+                        </Col>
+                        {(!building || building != '0') && (
+                            <Col>
+                                <Form.Group className="form-group">
+                                    <Form.Label>Sala</Form.Label>
+                                    <Form.Select
+                                        value={room}
+                                        onChange={(e) => {
+                                            setRoom(e.currentTarget.value);
+                                        }}
+                                    >
+                                        <option value="0">Wybierz budynek</option>
+                                        <option value={1}>ul. Szanajcy 5</option>
+                                        <option value={2}>ul. Szanajcy 14/16</option>
+                                    </Form.Select>
+                                </Form.Group>
+                            </Col>
+                        )}
+                    </Row>
+                    {/* <Row>
                         <Col xs={12} lg={6} className="mb-2">
                             <div className="form-group">
                                 <Form.Label htmlFor="inputPassword5">Dodawanie Konsultacji na Okres</Form.Label>
@@ -66,11 +114,12 @@ export default function Info() {
                             <Col xs={12} lg={6} className="mb-2">
                                 <div className="form-group">
                                     <Form.Label htmlFor="inputPassword5">Okres Konsultacji</Form.Label>
-                                    <DateRangePicker onChange={onChange} value={value} />
+
+                                    <DateRangeInput />
                                 </div>
                             </Col>
                         )}
-                    </Row>
+                    </Row> */}
 
                     <Row>
                         <Col xs={12} lg={6} className="mb-2">
@@ -78,7 +127,17 @@ export default function Info() {
                                 <Form.Label htmlFor="inputPassword5">Ostateczna data zapisu</Form.Label>
                                 <Form.Select
                                     aria-label="Default select example"
-                                    onChange={(e) => setShowSigningEnd(e.target.value !== '0')}
+                                    value={daySigningEnd}
+                                    onChange={(e) => {
+                                        setShowSigningEnd(e.target.value !== '0');
+
+                                        if (e.target.value !== '0') {
+                                            const endDate = new Date();
+                                            endDate.setDate(date.getDate() - Number(e.target.value));
+
+                                            setEndSigningUp(endDate);
+                                        }
+                                    }}
                                 >
                                     <option value="0">Brak</option>
                                     <option value="1">Dzień wcześniej</option>
@@ -96,6 +155,14 @@ export default function Info() {
                                         type="time"
                                         id="inputPassword5"
                                         aria-describedby="passwordHelpBlock"
+                                        value={hourSigningEnd}
+                                        onChange={(e) => {
+                                            console.log(e.target.value);
+                                            end_signing_up?.setHours(
+                                                Number(e.target.value.split(':')[0]),
+                                                Number(e.target.value.split(':')[1])
+                                            );
+                                        }}
                                     />
                                 </div>
                             </Col>

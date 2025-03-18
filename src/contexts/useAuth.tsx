@@ -7,6 +7,7 @@ import logoutApi from '../api/logout';
 import IUser from '../types/user.type';
 
 import { notifyPromise, updateNotify } from '../libs/notifications';
+import config from '../config';
 
 interface AuthContextType {
     isLogged: boolean;
@@ -44,13 +45,13 @@ export function AuthProvider({ children }: { children: ReactNode }): JSX.Element
                 setUser(user);
                 setIsLogged(user.isLogged);
 
-                // if (!user.isLogged) {
-                //     window.location.href = 'http://localhost:3000?error=not_logged';
-                // }
+                if (!user.isLogged) {
+                    window.location.href = `${config.mainPage.url}?error=not_logged`;
+                }
 
-                // if (!user.isAdmin && !user.isTeacher) {
-                //     window.location.href = 'http://localhost:3000?error=insufficient_permissions';
-                // }
+                if (!user.isAdmin && !user.isTeacher) {
+                    window.location.href = `${config.mainPage.url}?error=insufficient_permissions`;
+                }
                 setLoading(false);
             })
             .catch((error) => {
