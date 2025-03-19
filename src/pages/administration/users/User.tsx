@@ -7,15 +7,35 @@ import IUser from '../../../types/user.type';
 import { motion } from 'framer-motion';
 
 export default function User({ index, user }: { index: number; user: IUser }) {
+    console.log(user);
     return (
         <motion.div
             key={user._id}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{
-                duration: 0.3,
-                delay: index * 0.05, // Stopniowa animacja kolejnych elementów
+            // Animacja wyjścia - wszystkie elementy znikają równocześnie z przesunięciem w górę
+            exit={{
+                opacity: 0,
+                y: -20,
+                transition: {
+                    duration: 0.3,
+                    delay: 0, // Brak opóźnienia przy wyjściu
+                },
             }}
+            // Animacja wejścia ma opóźnienie zależne od indeksu
+            transition={{
+                duration: 0.4,
+                delay: 0.05 + index * 0.02, // Stopniowa animacja kolejnych elementów
+            }}
+            whileHover={{
+                scale: 1.02,
+                boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
+                transition: {
+                    duration: 0.1,
+                    delay: 0,
+                },
+            }}
+            whileTap={{ scale: 0.97, transition: { duration: 0.05, delay: 0 } }}
             className="user"
         >
             <div
