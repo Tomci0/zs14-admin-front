@@ -56,16 +56,7 @@ export default function Info() {
                 {data.building ? <Item icon="mdi:building" label="Budynek" value={data.building} /> : ''}
                 {data.room ? <Item icon="mdi:door" label="Sala" value={data.room} /> : ''}
                 {data.max_students ? (
-                    <Item
-                        icon="mdi:chair-school"
-                        label="Liczba miejsc"
-                        value={
-                            ((typeof data.students === 'number' && data.students) ||
-                                (data.students as IUser[]).length) +
-                            '/' +
-                            data.max_students.toString()
-                        }
-                    />
+                    <Item icon="mdi:chair-school" label="Liczba miejsc" value={'0/' + data.max_students.toString()} />
                 ) : (
                     ''
                 )}

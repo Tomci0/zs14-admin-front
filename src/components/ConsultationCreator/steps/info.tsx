@@ -18,8 +18,20 @@ export default function Info() {
     const [showSigningEnd, setShowSigningEnd] = useState(false);
     const [daySigningEnd, setDaySigningEnd] = useState(0);
     const [hourSigningEnd, setHourSigningEnd] = useState('12:00');
-    const { date, setDate, time, setTime, end_signing_up, setEndSigningUp, building, setBuilding, room, setRoom } =
-        useCreator();
+    const {
+        date,
+        setDate,
+        time,
+        setTime,
+        end_signing_up,
+        setEndSigningUp,
+        building,
+        setBuilding,
+        room,
+        setRoom,
+        max_students,
+        setMaxStudents,
+    } = useCreator();
 
     useEffect(() => {
         if (end_signing_up) {
@@ -62,6 +74,25 @@ export default function Info() {
                                     <option value="3">9:40-10:25</option>
                                 </Form.Select>
                             </div>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col xs={12} lg={6} className="mb-2">
+                            <Form.Group className="form-group">
+                                <Form.Label htmlFor="inputPassword5">Maksymalna Liczba Osób</Form.Label>
+                                <Form.Control
+                                    type="number"
+                                    id="inputPassword5"
+                                    aria-describedby="passwordHelpBlock"
+                                    placeholder="Maksymalna Liczba Osób"
+                                    min={1}
+                                    max={50}
+                                    value={max_students}
+                                    onChange={(e) => {
+                                        setMaxStudents(Number(e.target.value));
+                                    }}
+                                />
+                            </Form.Group>
                         </Col>
                     </Row>
                     <Row>
@@ -162,6 +193,8 @@ export default function Info() {
                                                 Number(e.target.value.split(':')[0]),
                                                 Number(e.target.value.split(':')[1])
                                             );
+
+                                            setEndSigningUp(new Date(end_signing_up as Date));
                                         }}
                                     />
                                 </div>

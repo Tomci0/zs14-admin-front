@@ -1,15 +1,17 @@
 import React, { useRef, useEffect } from 'react';
 import { Icon } from '@iconify/react';
 import './style.scss';
+import useConsultations from '../../contexts/useConsultations';
+import useCreator from '../../contexts/useCreator';
 
-export default function MarkdownEditor() {
+export default function MarkdownEditor({ value, setValue }: { value: string; setValue: (value: string) => void }) {
     const editorRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         // Upewnij się, że edytor jest gotowy do pisania z pustym divem
         if (editorRef.current) {
             if (!editorRef.current.innerHTML.trim()) {
-                editorRef.current.innerHTML = '<div><br></div>';
+                editorRef.current.innerHTML = value;
             }
 
             // Ustaw focus na edytorze
@@ -61,6 +63,7 @@ export default function MarkdownEditor() {
                 className="editor"
                 contentEditable={true}
                 ref={editorRef}
+                onInput={(e) => setValue(e.currentTarget.innerHTML)}
                 spellCheck={false}
                 onFocus={(e) => {
                     if (!e.currentTarget.innerHTML.trim()) {

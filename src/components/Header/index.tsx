@@ -8,11 +8,16 @@ import useAuth from '../../contexts/useAuth';
 
 import { Dropdown, Breadcrumb } from 'react-bootstrap';
 import { Icon } from '@iconify/react';
+import config from '../../constants/config';
 
 export default function Header() {
-    const { user } = useAuth();
+    const { user, logout } = useAuth();
     const location = useLocation();
     const pathnames = location.pathname.split('/').filter((x) => x);
+
+    function handleLogout() {
+        logout();
+    }
 
     return (
         <div id="header">
@@ -36,7 +41,7 @@ export default function Header() {
 
                         <Dropdown.Divider />
 
-                        <Dropdown.Item href="http://localhost:3000/logout">
+                        <Dropdown.Item onClick={handleLogout}>
                             <Icon icon="mdi:logout" />
                             <span className="name">Wyloguj Się</span>
                         </Dropdown.Item>

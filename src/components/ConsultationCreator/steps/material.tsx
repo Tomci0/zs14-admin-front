@@ -6,8 +6,10 @@ import { Form, Row, Col } from 'react-bootstrap';
 import MarkdownEditor from '../../MarkdownEditor';
 
 import MaterialSelector from '../../MaterialSelector';
+import useCreator from '../../../contexts/useCreator';
 
 export default function Material() {
+    const { description, setDescription } = useCreator();
     return (
         <Step>
             <div className="title">Zakres Konsultacji</div>
@@ -15,7 +17,7 @@ export default function Material() {
                 <Row>
                     <Col>
                         <Form.Label>Opis Konsultacji</Form.Label>
-                        <MarkdownEditor />
+                        <MarkdownEditor value={description as string} setValue={setDescription} />
                     </Col>
                     <Col>
                         <Form.Label>Zakres Konsultacji</Form.Label>

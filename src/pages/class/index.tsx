@@ -12,6 +12,8 @@ export default function Class() {
 
     const classId = useParams<{ id: string }>().id;
 
+    console.log(classId);
+
     if (!classId) {
         return null;
     }

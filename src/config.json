@@ -2,5 +2,6 @@
     "API_URL": "http://localhost:8000",
     "API_VERSION": "v1",
 
-    "ADMIN_PANEL_URL": "http://localhost:3001"
+    "ADMIN_PANEL_URL": "http://localhost:3001",
+    "MAIN_PAGE_URL": "http://localhost:3000"
 }

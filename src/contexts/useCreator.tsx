@@ -21,6 +21,9 @@ interface ConsultationCreatorContextType extends IConsultation {
 const ConsultationCreatorContext = createContext<ConsultationCreatorContextType>({
     date: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000),
     time: 0,
+    description: '<div><br></div>',
+    subjects: [],
+    scopes: [],
 
     setDate: () => {},
     setTime: () => {},

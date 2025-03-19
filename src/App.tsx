@@ -13,6 +13,7 @@ import { motion } from 'framer-motion';
 import Index from './pages';
 import Queue from './pages/radio/queue';
 import Class from './pages/class';
+import Users from './pages/administration/users';
 
 const Calendar = lazy(() => import('./pages/consultations/calendar'));
 const History = lazy(() => import('./pages/consultations/history'));
@@ -51,6 +52,9 @@ export default function App() {
                                     <Route path="/radio/history" element={<History />} />
 
                                     <Route path="/class/:id" element={<Class />} />
+
+                                    <Route path="/admin/users" element={<Users />} />
+                                    <Route path="/admin/users/:id" element={<div>User</div>} />
 
                                     <Route path="*" element={<Error404 />} />
                                 </Routes>

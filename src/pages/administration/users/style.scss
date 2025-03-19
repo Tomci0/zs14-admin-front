@@ -1,0 +1,98 @@
+@import '../../../styles/variables.scss';
+
+#users {
+    width: 100%;
+    .cards {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1rem;
+        width: 100%;
+
+        margin-bottom: 1rem;
+
+        .statistic-card {
+            flex-wrap: wrap;
+
+            flex: 1 1 0;
+
+            flex-grow: 1;
+            flex-shrink: 1;
+            flex-basis: calc(25% - 0.75rem);
+        }
+    }
+
+    .users-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        width: 100%;
+
+        .user {
+            background-color: var(--second-background);
+            padding: 0.75rem;
+            border-radius: 5px;
+            box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: 0.2s;
+
+            // Każdy student zajmuje prawie połowę szerokości (z uwzględnieniem odstępu)
+            width: calc(50% - 0.5rem);
+
+            display: flex;
+            align-items: center;
+
+            flex-direction: column;
+
+            // Na telefonach - jeden użytkownik w rzędzie
+            flex-basis: 100%;
+
+            // Na tabletach i większych - dwóch użytkowników w rzędzie
+            @media (min-width: 768px) {
+                flex-basis: calc(50% - 0.5rem);
+            }
+
+            &:hover {
+                border-color: $theme-color;
+            }
+
+            .name {
+                font-size: 1rem;
+                font-weight: 600;
+                color: var(--theme-text-color);
+            }
+
+            .email {
+                font-size: 0.8rem;
+                font-weight: 400;
+                color: var(--theme-text-color);
+            }
+        }
+    }
+
+    .pagination-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 2rem;
+
+        .pagination {
+            .page-item {
+                .page-link {
+                    color: var(--theme-color);
+
+                    &:focus {
+                        box-shadow: 0 0 0 0.25rem rgba(var(--theme-color-rgb), 0.25);
+                    }
+                }
+
+                &.active .page-link {
+                    background-color: var(--theme-color);
+                    border-color: var(--theme-color);
+                    color: white;
+                }
+            }
+        }
+    }
+}
